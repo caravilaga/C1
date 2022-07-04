@@ -5,6 +5,6 @@ pandas
 plotly.express
 matplotlib
 numpy
-pickle
+pickle-mixin
 statsmodels
 sklearn
