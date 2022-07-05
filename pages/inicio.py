@@ -16,7 +16,7 @@ import pandas as pd
 import plotly.express as px
 import matplotlib as plt
 
-df = pd.read_csv("data\data.csv")
+df = pd.read_csv("data/data.csv")
 df['Fecha Solicitud'] = pd.to_datetime(df['Fecha Solicitud']).dt.date
 
 df1 = pd.DataFrame({'count': df.groupby(['Fecha Solicitud','productosolicitado'])['Fecha Solicitud'].count()}).reset_index()
