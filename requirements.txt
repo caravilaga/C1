@@ -8,4 +8,4 @@ numpy
 pickle-mixin
 statsmodels
 sklearn
-scikit-learn==0.21.3
+scikit-learn
