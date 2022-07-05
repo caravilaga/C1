@@ -25,8 +25,8 @@ mensajes = ["Tu cliente es idóneo para continuar con la solicitud",
             "De acuerdo a las características de tu cliente esta solicitud será consultada por un analista de crédito en AgriCapital"]
 
 ### load ML model ###########################################
-with open('model/log_model.pickle', 'rb') as f:
-    model = pickle.load(f)
+#with open('model/log_model.pickle', 'rb') as f:
+#    model = pickle.load(f)
 
 layout=  dbc.Container(
     [
@@ -135,12 +135,12 @@ def update_output(n_clicks,via_val,plazo,monto):
     new = pd.DataFrame([[monto, plazo , float(p), float(0), float(0),
                      float(0), float(1), float(0), float(0),
                      float(0),float(0),float(1),float(0)]])
-    prediction = model.predict(new)[0]
+    #prediction = model.predict(new)[0]
 #
     if n_clicks == 0:
         return ""
     else:
-        return f'{prediction}'
+        return f"bIEN"
 
 
 #@callback(
