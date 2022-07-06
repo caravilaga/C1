@@ -25,8 +25,8 @@ mensajes = ["Tu cliente es idóneo para continuar con la solicitud",
             "De acuerdo a las características de tu cliente esta solicitud será consultada por un analista de crédito en AgriCapital"]
 
 ### load ML model ###########################################
-#with open('model/log_model.pickle', 'rb') as f:
-#    model = pickle.load(f)
+with open('model/log_model.pickle', 'rb') as f:
+    model = pickle.load(f)
 
 layout=  dbc.Container(
     [
@@ -35,16 +35,16 @@ layout=  dbc.Container(
     html.H1(children='AgriCapital',
                 style={
             'textAlign': 'center'}),
-    html.H4(children='-Portal de solicitudes-',
+    html.H4(children='-Loans-',
                 style={
             'textAlign': 'center'})
 ])
             ]),
 
         dbc.Row([
-                html.H5(children='En este módulo podrás gestionar las solicitudes de crédito \
-           para que tus clientes puedan acceder a los insumos y herramientas \
-           necesarios para crecer.', style = {'marginBottom':'2.5em'}),
+                html.H5(children='In this module you will be able to submit credit \
+                        applications in order for your clients to access all the \
+                        supplies they need for their crops.', style = {'marginBottom':'2.5em'}),
                 ]),
                 
                 dbc.Row([
@@ -54,7 +54,7 @@ layout=  dbc.Container(
                 ]),
        
         dbc.Row([
-                html.H4(children='Formulario de solicitud',style={
+                html.H4(children='Loan application',style={
             'textAlign': 'center'}),
                 ]),
 
@@ -135,12 +135,12 @@ def update_output(n_clicks,via_val,plazo,monto):
     new = pd.DataFrame([[monto, plazo , float(p), float(0), float(0),
                      float(0), float(1), float(0), float(0),
                      float(0),float(0),float(1),float(0)]])
-    #prediction = model.predict(new)[0]
+    prediction = model.predict(new)[0]
 #
     if n_clicks == 0:
         return ""
     else:
-        return f"bIEN"
+        return f"{prediction}"
 
 
 #@callback(

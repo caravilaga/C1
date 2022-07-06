@@ -24,6 +24,7 @@ df1 = pd.DataFrame({'count': df.groupby(['Fecha Solicitud','productosolicitado']
 df2 = pd.DataFrame({'count': df.groupby(['productosolicitado'])['MoraMáxima(SI/NO)'].value_counts()}).reset_index()
 df2 = df2.replace({'MoraMáxima(SI/NO)':{1:"En mora",0:"Al día"}})
 
+
 layout=  dbc.Container(
     [
         dbc.Row([
@@ -31,10 +32,10 @@ layout=  dbc.Container(
     html.H1(children='AgriCapital',
                 style={
             'textAlign': 'center'}),
-    html.H6(children='-Operaciones financieras-',
+    html.H6(children='-Financial Operations-',
                 style={
             'textAlign': 'center'}),
-    html.P(children='Bienvenido Aliado Agromaquinas S.A!'),
+    html.P(children='Welcome to your Agricapital lender app!'),
    ])
             ]),
 
@@ -58,8 +59,8 @@ layout=  dbc.Container(
         ]),
 
         dbc.Row([
-                html.P(children='A continuación te mostraremos cómo lucen algunas  \
-           características de un cliente con un buen perfil crediticio')
+                html.P(children='Below we will show you what some characteristics \
+                       of a client with a good credit profile looks like.')
                 ]),     
 
 
@@ -73,7 +74,14 @@ layout=  dbc.Container(
                         dcc.Graph(id='graph_4')
                 ]),
         
-        ]),    
+        ]), 
+
+    dbc.Row([
+            html.P(children = "To help you identify this type of client, we have \
+                   developed a model where you won't have to worry about credit \
+                   studies, complex analyzes and time consuming processes.")
+            
+            ])   
 
 ]
 )
@@ -87,7 +95,7 @@ def display_line(producto):
     figa = px.line(df_line, x='Fecha Solicitud', y='count', title = "Evolución en el número de créditos",
                    labels = {"Fecha Solicitud": "Fecha",
                              'count': "Número de créditos"})
-    figa.update_traces(line_color="#67001f")
+    figa.update_traces(line_color=px.colors.sequential.Aggrnyl[0])
     return figa
 
 @callback(
@@ -98,7 +106,7 @@ def display_line(producto):
     df_pie = df2.loc[df2['productosolicitado']==producto]
     figb = px.pie(df_pie,values = 'count', names= 'MoraMáxima(SI/NO)', title = 'Estado de los clientes',
                   labels = {'count':'Número',
-                            'MoraMáxima(SI/NO)':'Estado Cartera'}, hole = .2, color_discrete_sequence=px.colors.sequential.RdBu)
+                            'MoraMáxima(SI/NO)':'Estado Cartera'}, hole = .2, color_discrete_sequence=px.colors.sequential.Aggrnyl)
 
     return figb
 
@@ -112,7 +120,7 @@ def display_line(producto):
     figc = px.histogram(df_hist1,x = 'montosolicitado', color = 'MoraMáxima(SI/NO)', 
                         title = 'Monto solicitado', barmode='group',
                         labels = {"montosolicitado":"Monto",
-                                  "MoraMáxima(SI/NO)":"Estado cartera"})
+                                  "MoraMáxima(SI/NO)":"Estado cartera"},color_discrete_sequence=px.colors.sequential.Aggrnyl)
 
     return figc
 
@@ -126,6 +134,6 @@ def display_line(producto):
     figd = px.histogram(df_hist2,x = 'plazo', color = 'MoraMáxima(SI/NO)', 
                         title = 'Plazo', barmode='group',
                         labels = {"MoraMáxima(SI/NO)":"Estado cartera",
-                                  "plazo":"Plazo"})
+                                  "plazo":"Plazo"},color_discrete_sequence=px.colors.diverging.Temps)
 
     return figd

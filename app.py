@@ -29,7 +29,7 @@ app = dash.Dash(__name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.
 #Top menu, items get from all pages registered with plugin.pages
 navbar = dbc.NavbarSimple([
 
-    dbc.NavItem(dbc.NavLink("Inicio")),
+    dbc.NavItem(dbc.NavLink("AgriCapital")),
 #    dbc.DropdownMenu(
 #        [
 #
@@ -40,7 +40,7 @@ navbar = dbc.NavbarSimple([
 #        nav=True,
 #        label="Data Science",
 #    ),
-    dbc.NavItem(dbc.NavLink("Solicita tu crédito", href="/credito")),
+    dbc.NavItem(dbc.NavLink("Agro-loans", href="/credito")),
     ],
     brand="DS4A Project - Team 184",
     color="primary",
