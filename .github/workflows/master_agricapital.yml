@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'agricapital'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3B8D79175C0D4E35BA2E34BE9AD2F102 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4BCA2C052F14DFB915A44A68CDC45B0 }}
